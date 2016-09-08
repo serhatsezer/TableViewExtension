@@ -10,8 +10,7 @@ tableView.registerReusable(CustomTableViewCell.self, fromNib: true)
 ```
 
 
-```
-
+```swift
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
