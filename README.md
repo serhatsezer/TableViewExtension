@@ -13,6 +13,8 @@ You can use this method to dequeue your cell or header view;
 tableView.dequeueReusable(indexPath, fromNib: true)
 ```
 
+Here is full the implementation
+
 ```swift
 class ViewController: UIViewController {
 
