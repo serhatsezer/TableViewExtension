@@ -3,6 +3,13 @@
 When we are working with UITableView with code or Nibs we always have to write lots of code for to tableview do its job. This extension helps you write more swifty way to do so.
 
 ##Usage
+
+You can register a UITableViewCell, HeaderFooterView as simple as like;
+```
+tableView.registerReusable(CustomTableViewCell.self, fromNib: true)
+```
+
+
 ```
 
 class ViewController: UIViewController {
