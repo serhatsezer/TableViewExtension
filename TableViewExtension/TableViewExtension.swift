@@ -6,7 +6,7 @@ protocol Reusable: class {
 
 extension Reusable {
     static var reuseIdentifier: String {
-        return String(self)
+        return String(describing: self)
     }
 }
 
@@ -20,32 +20,32 @@ extension UITableView {
     func registerReusable(cellClass: Reusable.Type, fromNib: Bool = false) -> UITableView {
         if fromNib {
             let nib = UINib(nibName: cellClass.reuseIdentifier, bundle: nil)
-            self.registerNib(nib, forCellReuseIdentifier: cellClass.reuseIdentifier)
+            self.register(nib, forCellReuseIdentifier: cellClass.reuseIdentifier)
         } else {
-            self.registerClass(cellClass, forCellReuseIdentifier: cellClass.reuseIdentifier)
+            self.register(cellClass, forCellReuseIdentifier: cellClass.reuseIdentifier)
         }
         
         return self
     }
     
-    func dequeueReusable<T: UITableViewCell where T: Reusable>(indexPath: NSIndexPath, fromNib: Bool = false) -> T {
-        return self.dequeueReusableCellWithIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as! T
+    func dequeueReusable<T: UITableViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
+        return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
     
     // HeaderFooterViews
     func registerReusableHeaderFooterClass(headerFooterViewClass: Reusable.Type, fromNib: Bool = false) -> UITableView {
         if fromNib {
             let nib = UINib(nibName: headerFooterViewClass.reuseIdentifier, bundle: nil)
-            self.registerNib(nib, forHeaderFooterViewReuseIdentifier: headerFooterViewClass.reuseIdentifier)
+            self.register(nib, forHeaderFooterViewReuseIdentifier: headerFooterViewClass.reuseIdentifier)
         } else {
-            self.registerClass(headerFooterViewClass, forHeaderFooterViewReuseIdentifier: headerFooterViewClass.reuseIdentifier)
+            self.register(headerFooterViewClass, forHeaderFooterViewReuseIdentifier: headerFooterViewClass.reuseIdentifier)
         }
         
         return self
     }
     
-    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView where T: Reusable>(fromNib fromNib: Bool = false) -> T? {
-        return self.dequeueReusableHeaderFooterViewWithIdentifier(T.reuseIdentifier) as? T
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(fromNib: Bool = false) -> T? where T: Reusable {
+        return self.dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T
     }
 }
 
@@ -53,16 +53,16 @@ extension UICollectionView {
     func registerReusable(cellClass: Reusable.Type, fromNib: Bool = false) -> UICollectionView {
         if fromNib {
             let nib = UINib(nibName: cellClass.reuseIdentifier, bundle: nil)
-            self.registerNib(nib, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
+            self.register(nib, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
         } else {
-            self.registerClass(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
+            self.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
         }
         
         return self
     }
     
-    func dequeueReusable<T: UICollectionViewCell where T: Reusable>(indexPath: NSIndexPath, fromNib: Bool = false) -> T {
-        self.registerReusable(T.self, fromNib: fromNib)
-        return self.dequeueReusableCellWithReuseIdentifier(T.reuseIdentifier, forIndexPath: indexPath) as! T
+    func dequeueReusable<T: UICollectionViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
+        self.registerReusable(cellClass: T.self, fromNib: fromNib)
+        return self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath ) as! T
     }
 }
