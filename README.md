@@ -6,7 +6,7 @@ When we are working with UITableView with code or Nibs we always have to write l
 
 You can register a UITableViewCell, HeaderFooterView as simple as like;
 ```swift
-tableView.reuse(CustomTableViewCell.self, fromNib: true)
+tableView.reuse(CustomTableViewCell.self, fromNib: true) // fromNib is a optional. Default value is false.
 ```
 You can use this method to dequeue your cell or header view;
 ```swift
