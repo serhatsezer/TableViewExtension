@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tableView
-            .registerReusable(CustomTableViewCell.self, fromNib: true)
-            .registerReusable(SecondTableViewCell.self, fromNib: true)
+            .reuse(CustomTableViewCell.self, fromNib: true)
+            .reuse(SecondTableViewCell.self, fromNib: true)
             .registerReusableHeaderFooterClass(HeaderView.self, fromNib: true)
     }
 }
@@ -37,10 +37,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 0 {
-            let cell: CustomTableViewCell = tableView.dequeueReusable(indexPath, fromNib: true)
+            let cell: CustomTableViewCell = tableView.dequeue(indexPath, fromNib: true)
             return cell
         } else {
-            let cell: SecondTableViewCell = tableView.dequeueReusable(indexPath, fromNib: true)
+            let cell: SecondTableViewCell = tableView.dequeue(indexPath, fromNib: true)
             return cell
         }
     }
