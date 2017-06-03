@@ -28,7 +28,7 @@ extension UITableView {
         return self
     }
     
-    func dequeueReusable<T: UITableViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
+    func dequeue<T: UITableViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
         return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }
     
@@ -61,7 +61,7 @@ extension UICollectionView {
         return self
     }
     
-    func dequeueReusable<T: UICollectionViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
+    func dequeue<T: UICollectionViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
         self.
         
         (cellClass: T.self, fromNib: fromNib)
