@@ -17,7 +17,7 @@ extension UICollectionViewCell: Reusable { }
 extension UITableView {
     
     // Cells
-    func registerReusable(cellClass: Reusable.Type, fromNib: Bool = false) -> UITableView {
+    func reuse(cellClass: Reusable.Type, fromNib: Bool = false) -> UITableView {
         if fromNib {
             let nib = UINib(nibName: cellClass.reuseIdentifier, bundle: nil)
             self.register(nib, forCellReuseIdentifier: cellClass.reuseIdentifier)
@@ -50,7 +50,7 @@ extension UITableView {
 }
 
 extension UICollectionView {
-    func registerReusable(cellClass: Reusable.Type, fromNib: Bool = false) -> UICollectionView {
+    func reuse(cellClass: Reusable.Type, fromNib: Bool = false) -> UICollectionView {
         if fromNib {
             let nib = UINib(nibName: cellClass.reuseIdentifier, bundle: nil)
             self.register(nib, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
@@ -62,7 +62,9 @@ extension UICollectionView {
     }
     
     func dequeueReusable<T: UICollectionViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
-        self.registerReusable(cellClass: T.self, fromNib: fromNib)
+        self.
+        
+        (cellClass: T.self, fromNib: fromNib)
         return self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath ) as! T
     }
 }
