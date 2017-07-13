@@ -33,7 +33,7 @@ extension UITableView {
     }
     
     // HeaderFooterViews
-    func registerReusableHeaderFooterClass(headerFooterViewClass: Reusable.Type, fromNib: Bool = false) -> UITableView {
+    func registerHeaderFooter(headerFooterViewClass: Reusable.Type, fromNib: Bool = false) -> UITableView {
         if fromNib {
             let nib = UINib(nibName: headerFooterViewClass.reuseIdentifier, bundle: nil)
             self.register(nib, forHeaderFooterViewReuseIdentifier: headerFooterViewClass.reuseIdentifier)
@@ -44,7 +44,7 @@ extension UITableView {
         return self
     }
     
-    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(fromNib: Bool = false) -> T? where T: Reusable {
+    func dequeHeaderFooter<T: UITableViewHeaderFooterView>(fromNib: Bool = false) -> T? where T: Reusable {
         return self.dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T
     }
 }
