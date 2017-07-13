@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         tableView
             .reuse(CustomTableViewCell.self, fromNib: true)
             .reuse(SecondTableViewCell.self, fromNib: true)
-            .registerReusableHeaderFooterClass(HeaderView.self, fromNib: true)
+            .registerHeaderFooter(HeaderView.self, fromNib: true)
     }
 }
 
@@ -50,7 +50,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeaderView: HeaderView? = tableView.dequeueReusableHeaderFooterView(fromNib: true)
+        let sectionHeaderView: HeaderView? = tableView.dequeueHeaderFooter(fromNib: true)
         
         return sectionHeaderView
     }
