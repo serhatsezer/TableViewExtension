@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tableView
-            .reuse(CustomTableViewCell.self, fromNib: true)
-            .reuse(SecondTableViewCell.self, fromNib: true)
+            .reuse(InfoCell.self) // Without nib file
+            .reuse(CustomTableViewCell.self, fromNib: true) // With nib file
             .registerHeaderFooter(HeaderView.self, fromNib: true)
     }
 }
