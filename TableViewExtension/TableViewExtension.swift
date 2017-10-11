@@ -62,9 +62,7 @@ extension UICollectionView {
     }
     
     func dequeue<T: UICollectionViewCell>(indexPath: IndexPath, fromNib: Bool = false) -> T where T: Reusable {
-        self.
-        
-        (cellClass: T.self, fromNib: fromNib)
+        self.(cellClass: T.self, fromNib: fromNib)
         return self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath ) as! T
     }
 }
