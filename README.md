@@ -37,11 +37,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row % 2 == 0 {
-            let cell: CustomTableViewCell = tableView.dequeue(indexPath, fromNib: true)
-            return cell
+            let infoCell: InfoCell = tableView.dequeue(indexPath)
+            return infoCell
         } else {
-            let cell: SecondTableViewCell = tableView.dequeue(indexPath, fromNib: true)
-            return cell
+            let secondCell: SecondTableViewCell = tableView.dequeue(indexPath, fromNib: true)
+            return secondCell
         }
     }
     
